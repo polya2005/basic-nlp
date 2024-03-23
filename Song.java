@@ -5,6 +5,7 @@ import java.util.Scanner;
 
 class Song {
     private ArrayList<String> lyricsWords = new ArrayList<>();
+    private SentimentValueTable sentimentValueTable;
 
     /**
      * Creates a <code>Song</code> object.
@@ -29,7 +30,37 @@ class Song {
         songReader.close();
     }
 
-    public ArrayList<String> getLyricsWords(){
+    /**
+     * Creates a <code>Song</code> object with specified table for sentiment
+     * analysis.
+     * 
+     * @param filename            name of the file containing the lyrics
+     * @param sentimentValueTable sentiment value table for sentiment analysis
+     */
+    public Song(String filename, SentimentValueTable sentimentValueTable) {
+        this(filename);
+        this.sentimentValueTable = sentimentValueTable;
+    }
+
+    /**
+     * @return the sum of the sentiment values of every word in the song
+     */
+    public int getSentimentSum(){
+        int sentimentSum = 0;
+        for (String word : lyricsWords) {
+            sentimentSum += sentimentValueTable.getSentiment(word);
+        }
+        return sentimentSum;
+    }
+
+    /**
+     * @return the number of words in the song, with duplicates
+     */
+    public int getWordCount(){
+        return lyricsWords.size();
+    }
+
+    public ArrayList<String> getLyricsWords() {
         return lyricsWords;
     }
 }
