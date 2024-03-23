@@ -27,7 +27,7 @@ public class SentimentValueTable {
         }
         while (sentimentReader.hasNextLine()) {
             String line = sentimentReader.nextLine();
-            sentimentValues.put(line.substring(0, line.indexOf('\t')), Integer.parseInt(line.substring(line.indexOf('\t') + 1)));
+            sentimentValues.put(line.substring(0, line.indexOf('\t')), Integer.parseInt(line.substring(line.indexOf('\t') + 1))); // put (word (before tab), sentiment (after tab))
         }
     }
 
