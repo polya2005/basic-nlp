@@ -28,6 +28,7 @@ class Song {
         while (songReader.hasNext()) {
             lyricsWord = songReader.next().toLowerCase(); // Get the next word in lowercase
             lyricsWord = lyricsWord.replaceAll("[^a-z']", ""); // remove punctuations except for '
+            lyricsWord = lyricsWord.replaceAll("^'", ""); // remove leading '
             lyricsWords.add(lyricsWord);
         }
         songReader.close();
