@@ -60,12 +60,15 @@ class Song {
     }
 
     /**
-     * @return the number of words in the song, with duplicates
+     * @return the number of words in the song, including duplicates
      */
     public int getWordCount() {
         return lyricsWords.size();
     }
 
+    /**
+     * @return the number of words that are not stop words in the song, including duplicates
+     */
     public int getNonStopWordCount() {
         int count = 0;
         for (String word : lyricsWords) {
@@ -74,6 +77,17 @@ class Song {
             }
         }
         return count;
+    }
+
+    /**
+     * @return average length of the words in the song
+     */
+    public double getAverageWordLength(){
+        int lengthSum = 0;
+        for (String word : lyricsWords) {
+            lengthSum += word.length();
+        }
+        return (double)lengthSum / getWordCount();
     }
 
     /**
