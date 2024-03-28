@@ -105,8 +105,4 @@ class Song {
         }
         return res;
     }
-
-    public ArrayList<String> getLyricsWords() {
-        return lyricsWords;
-    }
 }
